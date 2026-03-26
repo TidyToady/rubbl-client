@@ -61,9 +61,13 @@
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: opacity 0.2s;
+      transition: background-color 0.25s ease;
     }
-    .btn-rubbl:hover { background-color: #df3426; color: #fff; text-decoration: none; }
+    .btn-rubbl:hover {
+      background-color: #df3426;
+      color: #fff;
+      text-decoration: none;
+    }
     .btn-rubbl img { height: 24px; width: 24px; }
 
     .section-label {
@@ -270,6 +274,11 @@
       width: 100%;
       border: 0.95px solid #bcc3c7;
       border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
     .pricing-card__inner {
       background: linear-gradient(138deg, #fff 1.2%, #f3f1f1 100%);
