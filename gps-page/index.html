@@ -63,7 +63,7 @@
       cursor: pointer;
       transition: opacity 0.2s;
     }
-    .btn-rubbl:hover { opacity: 0.9; color: #fff; text-decoration: none; }
+    .btn-rubbl:hover { background-color: #df3426; color: #fff; text-decoration: none; }
     .btn-rubbl img { height: 24px; width: 24px; }
 
     .section-label {
@@ -259,20 +259,42 @@
     .gps-pricing__cards {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
       max-width: 1280px;
       margin: 0 auto;
-      align-items: center;
+      align-items: stretch;
     }
 
-    /* Plus (featured) card */
-    .pricing-card--featured {
+    /* Shared card styles */
+    .pricing-card {
       width: 100%;
-      max-width: 420px;
+      border: 0.95px solid #bcc3c7;
+      border-radius: 15px;
+    }
+    .pricing-card__inner {
+      background: linear-gradient(138deg, #fff 1.2%, #f3f1f1 100%);
+      border: 3.8px solid #fff;
+      border-radius: 15px;
+      padding: 40px 24px 24px;
+      box-shadow: 1.9px 3.8px 15.2px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Featured (Plus) card */
+    .pricing-card.pricing-card--featured {
       border: 2.85px solid var(--primary);
       border-radius: 17px;
       position: relative;
       overflow: visible;
+    }
+    .pricing-card--featured .pricing-card__inner {
+      background: linear-gradient(134deg, #fff 1.2%, #f3f1f1 100%);
+      border: 4.18px solid #fff;
+      border-radius: 17px;
+      padding: 60px 24px 24px;
+      box-shadow: 3.8px 6.65px 30.4px rgba(0,0,0,0.3);
     }
     .pricing-card--featured .pricing-card__badge {
       position: absolute;
@@ -289,41 +311,13 @@
       border-radius: 0 0 11.4px 11.4px;
       white-space: nowrap;
     }
-    .pricing-card__inner {
-      background: linear-gradient(134deg, #fff 1.2%, #f3f1f1 100%);
-      border: 4.18px solid #fff;
-      border-radius: 17px;
-      padding: 64px 40px 40px;
-      box-shadow: 3.8px 6.65px 30.4px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      gap: 33px;
-    }
-
-    /* Basic card */
-    .pricing-card--basic {
-      width: 100%;
-      max-width: 420px;
-      border: 0.95px solid #bcc3c7;
-      border-radius: 15px;
-    }
-    .pricing-card--basic .pricing-card__inner {
-      background: linear-gradient(138deg, #fff 1.2%, #f3f1f1 100%);
-      border: 3.8px solid #fff;
-      border-radius: 15px;
-      padding: 40px;
-      box-shadow: 1.9px 3.8px 15.2px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
 
     .pricing-card__name {
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 900;
       color: var(--rubbl-black);
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .pricing-card__subtitle {
       font-size: 14px;
@@ -331,6 +325,14 @@
       color: #98A0A5;
       line-height: 1.4;
       font-style: italic;
+    }
+    .pricing-card__image {
+      width: 100%;
+      max-width: 237px;
+      height: 103px;
+      object-fit: contain;
+      margin: 0 auto;
+      display: block;
     }
     .pricing-card__price {
       font-size: 40px;
@@ -373,9 +375,10 @@
     .pricing-card__cta .btn-rubbl {
       width: 100%;
       height: 56px;
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: 2px;
       border-radius: 8px;
+      white-space: nowrap;
     }
     .pricing-card__cta .btn-rubbl img { height: 24px; }
     .pricing-card__savings {
@@ -461,18 +464,13 @@
 
       .gps-pricing__cards {
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
       }
-      .pricing-card--featured {
-        order: 2;
-        flex: 1 1 0;
-        max-width: 420px;
-      }
-      .pricing-card--basic {
-        order: 1;
-        flex: 1 1 0;
-        max-width: 420px;
+      .pricing-card {
+        flex: 1 1 calc(25% - 15px);
+        min-width: 260px;
       }
     }
 
@@ -584,16 +582,107 @@
     </div>
     <div class="gps-pricing__cards">
 
-      <!-- Rubbl Plus (Featured) — first in DOM for mobile top -->
-      <div class="pricing-card--featured">
+      <!-- Hardwired Unit -->
+      <div class="pricing-card">
+        <div class="pricing-card__inner">
+          <div>
+            <p class="pricing-card__name">Hardwired Unit</p>
+            <p class="pricing-card__subtitle">Standalone hardwired unit for basic tracking</p>
+          </div>
+          <img class="pricing-card__image" src="images/units_hardwired.jpg" alt="Hardwired GPS Unit">
+          <div>
+            <p class="pricing-card__price">$100</p>
+          </div>
+          <ul class="pricing-card__features">
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Hardwire GPS Tracker</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Real-Time Tracking</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Geofence Alerts</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Unlimited Data</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Easy Installation</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Access to Tracking Portal</li>
+            <li class="feature-excluded"><img src="images/pricing_x.svg" alt="✗"> Remote Shut Off (Kill Switch)</li>
+            <li class="feature-excluded"><img src="images/pricing_x.svg" alt="✗"> Backup Magnetic Battery-Powered GPS Unit</li>
+          </ul>
+          <div class="pricing-card__cta">
+            <button type="button" class="btn-rubbl">
+              <img src="images/cta_btn_icon.svg" alt="">
+              Start Tracking
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Magnetic Unit -->
+      <div class="pricing-card">
+        <div class="pricing-card__inner">
+          <div>
+            <p class="pricing-card__name">Magnetic Unit</p>
+            <p class="pricing-card__subtitle">Standalone magnetic unit with backup battery</p>
+          </div>
+          <img class="pricing-card__image" src="images/units_magnetic.jpg" alt="Magnetic GPS Unit">
+          <div>
+            <p class="pricing-card__price">$150</p>
+          </div>
+          <ul class="pricing-card__features">
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Hardwire GPS Tracker</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Real-Time Tracking</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Geofence Alerts</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Unlimited Data</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Easy Installation</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Access to Tracking Portal</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Remote Shut Off (Kill Switch)</li>
+            <li class="feature-excluded"><img src="images/pricing_x.svg" alt="✗"> Backup Magnetic Battery-Powered GPS Unit</li>
+          </ul>
+          <div class="pricing-card__cta">
+            <button type="button" class="btn-rubbl">
+              <img src="images/cta_btn_icon.svg" alt="">
+              Start Tracking
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rubbl Basic -->
+      <div class="pricing-card">
+        <div class="pricing-card__inner">
+          <div>
+            <p class="pricing-card__name">Rubbl Basic</p>
+            <p class="pricing-card__subtitle">Best For: Single machines and essential protection</p>
+          </div>
+          <img class="pricing-card__image" src="images/units_basic.jpg" alt="Rubbl Basic Bundle">
+          <div>
+            <p class="pricing-card__price">$300</p>
+          </div>
+          <ul class="pricing-card__features">
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Hardwire GPS Tracker</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Real-Time Tracking</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Geofence Alerts</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Unlimited Data</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Easy Installation</li>
+            <li><img src="images/pricing_checkmark.svg" alt="✓"> Access to Tracking Portal</li>
+            <li class="feature-excluded"><img src="images/pricing_x.svg" alt="✗"> Remote Shut Off (Kill Switch)</li>
+            <li class="feature-excluded"><img src="images/pricing_x.svg" alt="✗"> Backup Magnetic Battery-Powered GPS Unit</li>
+          </ul>
+          <div class="pricing-card__cta">
+            <button type="button" class="btn-rubbl">
+              <img src="images/cta_btn_icon.svg" alt="">
+              Start Tracking
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rubbl Plus (Featured) -->
+      <div class="pricing-card pricing-card--featured">
         <div class="pricing-card__badge">Most Popular</div>
         <div class="pricing-card__inner">
           <div>
             <p class="pricing-card__name">Rubbl Plus</p>
             <p class="pricing-card__subtitle">Best for: active fleets and high-value assets</p>
           </div>
+          <img class="pricing-card__image" src="images/units_plus.jpg" alt="Rubbl Plus Bundle">
           <div>
-            <p class="pricing-card__price">$600</p>
+            <p class="pricing-card__price">$400</p>
           </div>
           <ul class="pricing-card__features">
             <li><img src="images/pricing_checkmark.svg" alt="✓"> Hardwire GPS Tracker</li>
@@ -611,35 +700,6 @@
               Start Tracking
             </button>
             <p class="pricing-card__savings">15% Savings Over Basic</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Rubbl Basic -->
-      <div class="pricing-card--basic">
-        <div class="pricing-card__inner">
-          <div>
-            <p class="pricing-card__name">Rubbl Basic</p>
-            <p class="pricing-card__subtitle">Best For: Single machines and essential protection</p>
-          </div>
-          <div>
-            <p class="pricing-card__price">$300</p>
-          </div>
-          <ul class="pricing-card__features">
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Hardwire GPS Tracker</li>
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Remote Shut Off (Kill Switch)</li>
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Real-Time Tracking</li>
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Geofence Alerts</li>
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Unlimited Data</li>
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Easy Installation</li>
-            <li><img src="images/pricing_checkmark.svg" alt="✓"> Access to Tracking Portal</li>
-            <li class="feature-excluded"><img src="images/pricing_x.svg" alt="✗"> Backup Magnetic Battery-Powered GPS Unit</li>
-          </ul>
-          <div class="pricing-card__cta">
-            <button type="button" class="btn-rubbl">
-              <img src="images/cta_btn_icon.svg" alt="">
-              Start Tracking
-            </button>
           </div>
         </div>
       </div>
